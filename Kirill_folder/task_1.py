@@ -114,7 +114,6 @@ while GAME:
     if game_start == 1:
         lives = int(input("Podaj liczbe ile zyc chesz miec: "))
         print(f"Masz {lives} zyc(-ia)! {"♥" * lives}")
-
         packing_backpack()
 
         while lives > 0:
