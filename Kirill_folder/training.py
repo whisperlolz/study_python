@@ -1,75 +1,63 @@
-# If approach
-# count_positive = 0
-# count_negative = 0
-# max_num = None
-# min_num = None
-# sum_num = 0
+# from pkgutil import get_data
 #
-# while True:
-#     num = int(input("Wprowadz liczbe: "))
 #
-#     if num != 0:
+# class Cat:
+#     name = None
+#     age = None
+#     isHappy = None
 #
-#         if num > 0:
-#             count_positive += 1
-#         if num < 0:
-#             count_negative += 1
+#     def __init__(self, name, age, isHappy):
+#         self.set_data(name, age, isHappy)
+#         self.get_data()
 #
-#         if max_num is None or min_num is None:
-#             max_num = num
-#             min_num = num
+#     def set_data(self, name=None, age=None, isHappy=None):
+#         self.name = name
+#         self.age = age
+#         self.isHappy = isHappy
 #
-#         if max_num < num:
-#             max_num = num
+#     def get_data(self):
+#         print(f"Name: {self.name}\nAge: {self.age}\nIsHappy: {self.isHappy}")
 #
-#         if min_num > num and min_num != 0:
-#             min_num = num
 #
-#         sum_num += num
+# cat_one = Cat("Szarik", 3, True)
+# cat_one.set_data("John", 2)
 #
-#     if num == 0:
-#
-#         if count_positive == 0 and count_negative == 0:
-#             print("Brak liczb")
-#             break
-#
-#         else:
-#             print(f"""
-# >0: {count_positive}
-# <0: {count_negative}
-# min: {min_num}
-# max: {max_num}
-# sum: {sum_num}
-# count: {count_positive + count_negative}
-# avg: {round(sum_num / (count_positive + count_negative), 2)}""")
-#         break
+# cat_two = Cat("Bobik", 2, False)
 
-# List approach
-nums_list = []
-count_positive = 0
-count_negative = 0
 
-while True:
-    try:
-        ask_num = int(input("Wprowadz liczbe: "))
-        if ask_num != 0:
-            nums_list.append(ask_num)
-            if ask_num > 0: count_positive += 1
-            if ask_num < 0: count_negative += 1
-        if ask_num == 0:
-            if len(nums_list) > 0:
-                print(f"""
-list: {nums_list}
->0: {count_positive}
-<0: {count_negative}
-min: {min(nums_list)}
-max: {max(nums_list)}
-sum: {sum(nums_list)}
-count: {len(nums_list)}
-avg: {round(sum(nums_list) / len(nums_list), 2)}""")
-                break
-            else:
-                print("Nie masz nic do podliczenia!")
-                break
-    except ValueError:
-        print("Musisz podac liczbe!")
+class Building:
+    __year = None
+    __city = None
+
+    def __init__(self, year, city):
+        self.year = year
+        self.city = city
+
+    def get_info(self):
+        print("Year: ", self.year, "; City: ", self.city)
+
+
+class School(Building):
+    pupils = 0
+
+    def __init__(self, pupils, year, city):
+        super(School, self).__init__(year, city)
+        self.pupils = pupils
+
+    def get_info(self):
+        print("Year: ", self.year, "; City: ", self.city, "; Pupils: ", self.pupils)
+
+
+class House(Building):
+    pass
+
+
+class Shop(Building):
+    pass
+
+
+school = School(100, 2000, "Gdansk")
+school.get_info()
+house = House(2000, "Gdansk")
+shop = Shop(2000, "Gdansk")
+shop.get_info()
